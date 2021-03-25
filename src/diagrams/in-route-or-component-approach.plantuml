@@ -1,0 +1,32 @@
+@startuml
+!pragma teoz true
+
+title In Route/Component Approach
+entity vuecomponent
+control endpoint
+
+activate vuecomponent
+vuecomponent -> vuecomponent: imperative render conditional exp
+vuecomponent -> vuecomponent: getData()
+vuecomponent -> vuecomponent: isLoading = true
+vuecomponent -> vuecomponent: render loading spinner
+vuecomponent -> endpoint: XHRequest
+... delay ...
+
+alt success
+endpoint --> vuecomponent: response
+vuecomponent -> vuecomponent: this.data = response.data;\nthis.error = null;
+vuecomponent -> vuecomponent: render data
+
+else error
+endpoint --> vuecomponent: error
+vuecomponent -> vuecomponent: this.data = null;\nthis.error = error.message;
+vuecomponent -> vuecomponent: render error message;
+
+end
+
+vuecomponent -> vuecomponent: isLoading = false
+
+destroy vuecomponent
+
+@enduml

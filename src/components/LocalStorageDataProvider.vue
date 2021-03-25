@@ -1,7 +1,6 @@
 <script>
 export default {
   data: () => ({
-    isLoading: false,
     error: null,
     data: null,
   }),
@@ -10,7 +9,6 @@ export default {
   },
   methods: {
     getData() {
-      this.isLoading = true;
       try {
         if (!window.localStorage) {
           throw new Error('Local storage is not supported');
@@ -25,8 +23,6 @@ export default {
       } catch (e) {
         this.data = null;
         this.error = e.message;
-      } finally {
-        this.isLoading = false;
       }
     },
     getChildNode(slotName, bindings) {
@@ -38,9 +34,6 @@ export default {
     }
   },
   render() {
-    if (this.isLoading) {
-      return this.getChildNode('loading');
-    }
     if (this.error) {
       return this.getChildNode('error', {
         error: this.error,

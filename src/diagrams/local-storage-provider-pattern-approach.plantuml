@@ -1,0 +1,26 @@
+@startuml
+!pragma teoz true
+skinparam nodesep 50
+
+title Local Storage Provider Approach
+entity vuecomponent
+control provider
+control window
+
+activate vuecomponent
+vuecomponent -> vuecomponent: declarative slot definition
+provider -> provider: localStorage.getItem
+... delay ...
+
+alt success
+window --> provider: itemValue
+provider -> provider : this.data = JSON.parse(itemValue);\nthis.error = null;
+provider -> provider: render v-slot:default
+
+else error
+window --> provider: error
+provider -> provider: this.data = null;\nthis.error = error.message;
+provider -> provider: render v-slot:error
+end
+
+@enduml

@@ -12,17 +12,17 @@
       <template #default="{ data: userData }">
         <div>
           <label>
-            [Vuex] Name:
+            Name:
             <output>{{ userData.name }}</output>
           </label>
           <br>
           <label>
-            [Vuex] Job:
+            Job:
             <output>{{ userData.job }}</output>
           </label>
           <br>
           <label>
-            [Vuex] Umur:
+            Umur:
             <output>{{ userData.age }}</output>
           </label>
         </div>

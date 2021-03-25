@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div id="nav"> |
-      <router-link exact to="/">In-Component</router-link> |
+      <router-link exact to="/">In-Route</router-link> |
+      <router-link to="/in-component">In-Component</router-link> |
       <router-link to="/vuex-approach">With Vuex</router-link> |
       <router-link to="/provider-pattern">Provider Pattern</router-link> |
       <router-link to="/local-storage-provider-pattern">Local Storage Provider Pattern</router-link> |

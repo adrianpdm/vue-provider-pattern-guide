@@ -1,7 +1,7 @@
 <template>
   <div key="route:simple" style="padding: 16rem;">
     <div v-if="isLoading">
-      <img src="/spinner.gif">
+      <img src="/spinner.gif">  
     </div>
     <div v-else-if="error">
       {{ error }}
@@ -26,27 +26,35 @@
 </template>
 
 <script>
-import { mapState, mapActions, } from 'vuex'
-
+import axios from '../lib/mockAxios'
 export default {
-  computed: {
-    ...mapState('user', [
-      'isLoading',
-      'error',
-      'userData'
-    ])
+  data() {
+    return {
+      isLoading: false,
+      error: null,
+      userData: null
+    }
   },
   mounted() {
     this.getUserData();
   },
   methods: {
-    ...mapActions('user', [
-      'getUserData'
-    ]),
-  },
-  // beforeRouteLeave(to, from, next) {
-  //   this.$store.commit('user/setUserData', {});
-  //   next();
-  // }
+    getUserData() {
+      this.isLoading = true;
+      return axios.get()
+        .then((res) => {
+          this.userData = res.data;
+          this.error = null;
+        })
+        .catch((err) => {
+          if (err instanceof Error) {
+            this.userData = null;
+            this.error = err.message;
+          }
+        }).finally(() => {
+          this.isLoading = false;
+        })
+    }
+  }
 }
 </script>

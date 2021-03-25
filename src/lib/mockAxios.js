@@ -7,7 +7,7 @@ const axios = {
           name: route,
           job: 'web developer',
           age: 30
-        }
+        };
         // resolve({ data });
       }, 2500);
     })

@@ -23,7 +23,7 @@ export default {
           this.isLoading = false;
         })
     },
-    getChildNode(slotName, bindings) {
+    renderSlot(slotName, bindings) {
       if (slotName in this.$scopedSlots === false) {
         return null;
       }
@@ -33,15 +33,15 @@ export default {
   },
   render() {
     if (this.isLoading) {
-      return this.getChildNode('loading');
+      return this.renderSlot('loading');
     }
     if (this.error) {
-      return this.getChildNode('error', {
+      return this.renderSlot('error', {
         error: this.error,
       });
     }
     if (this.data) {
-      return this.getChildNode('default', {
+      return this.renderSlot('default', {
         data: this.data
       });
     }

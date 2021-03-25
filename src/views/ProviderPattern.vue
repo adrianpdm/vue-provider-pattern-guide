@@ -9,23 +9,8 @@
           {{ error }}
         </pre>
       </template>
-      <template #default="{ data: userData }">
-        <div>
-          <label>
-            [Vuex] Name:
-            <output>{{ userData.name }}</output>
-          </label>
-          <br>
-          <label>
-            [Vuex] Job:
-            <output>{{ userData.job }}</output>
-          </label>
-          <br>
-          <label>
-            [Vuex] Umur:
-            <output>{{ userData.age }}</output>
-          </label>
-        </div>
+      <template #default="{ data }">
+        <DumbUserDataCard :user-data="data" />
       </template>
     </DataProvider>
   </div>
@@ -33,9 +18,11 @@
 
 <script>
 import DataProvider from '../components/DataProvider'
+import DumbUserDataCard from '../components/DumbUserDataCard'
 export default {
   components: {
     DataProvider,
+    DumbUserDataCard,
   },
 }
 </script>

@@ -1,0 +1,33 @@
+@startuml
+!pragma teoz true
+skinparam nodesep 50
+
+title Vuex Approach
+entity vuecomponent
+control vuex
+control endpoint
+
+activate vuecomponent
+vuecomponent -> vuecomponent: imperative render conditional exp
+vuecomponent -> vuex: getData()
+vuex -> vuex: isLoading = true
+vuex --> vuecomponent: reactive update
+vuecomponent -> vuecomponent: render loading spinner
+vuex -> endpoint: XHRequest
+... delay ...
+
+alt success
+endpoint --> vuex: response
+vuex -> vuex : commit('setData', response.data);\ncommit('setError', null);
+vuex --> vuecomponent: reactive update
+vuecomponent -> vuecomponent: render data
+
+else error
+endpoint --> vuex: error
+vuex -> vuex: commit('setData', null);\ncommit('setError', error.message);
+vuex --> vuecomponent: reactive update
+vuecomponent -> vuecomponent: render error message
+end
+
+vuex -> vuex: isLoading = false
+@enduml

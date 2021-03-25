@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import InRouteApproach from '../views/InRouteApproach'
 import InComponentApproach from '../views/InComponentApproach'
 import WithVuexApproach from '../views/WithVuexApproach'
 import ProviderPattern from '../views/ProviderPattern'
@@ -12,7 +13,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: InComponentApproach
+    component: InRouteApproach
+  },
+  {
+    path: '/in-component',
+    component: InComponentApproach,
   },
   {
     path: '/vuex-approach',

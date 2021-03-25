@@ -1,0 +1,30 @@
+@startuml
+!pragma teoz true
+skinparam nodesep 50
+
+title Remote Provider Approach
+entity vuecomponent
+control provider
+control endpoint
+
+activate vuecomponent
+vuecomponent -> vuecomponent: declarative slot definition
+provider -> provider: getData()
+provider -> provider: isLoading = true
+provider -> provider: render v-slot:loading
+provider -> endpoint: XHRequest
+... delay ...
+
+alt success
+endpoint --> provider: response
+provider -> provider : this.data = response.data;\nthis.error = null;
+provider -> provider: render v-slot:default
+
+else error
+endpoint --> provider: error
+provider -> provider: this.data = null;\nthis.error = error.message;
+provider -> provider: render v-slot:error
+end
+
+provider -> provider: isLoading = false
+@enduml
