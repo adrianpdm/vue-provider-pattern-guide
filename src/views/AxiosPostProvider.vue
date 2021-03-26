@@ -1,7 +1,7 @@
 <template>
   <div key="route:axios-post-provider-pattern" style="padding: 16rem;">
     <AxiosPostProvider ref="axiosPost">
-      <!-- <template #loading>
+      <template #loading>
         <img src="/spinner.gif">
       </template>
       <template #success="response">
@@ -15,9 +15,9 @@
         <pre>
           {{ error }}
         </pre>
-      </template> -->
+      </template>
     </AxiosPostProvider>
-    <form @submit.prevent="onSubmit">
+    <form name="axiosPostForm" @submit.prevent="onSubmit">
       <label>
         Name
         <input type="text" name="name">
@@ -46,12 +46,14 @@ export default {
   },
   methods: {
     onSubmit() {
-      const form = document.forms[0];
+      const form = document.getElementsByName('axiosPostForm')[0];
       const formData = new FormData(form);
-      this.$refs.axiosPost.execute(formData)
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
+
+      const json = {};
+      formData.forEach((value, key) => {
+        json[key] = value;
+      });
+      this.$refs.axiosPost.execute(json);
     }
   }
 }
