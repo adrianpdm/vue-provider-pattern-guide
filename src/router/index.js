@@ -6,7 +6,7 @@ import WithVuexApproach from '../views/WithVuexApproach'
 import ProviderPattern from '../views/ProviderPattern'
 import LocalStorageProviderPattern from '../views/LocalStorageProviderPattern'
 import RenderlessProviderPattern from '../views/RenderlessProviderPattern'
-import ExtendingProviderPattern from '../views/ExtendingProviderPattern'
+import AxiosPostProvider from '../views/AxiosPostProvider'
 
 Vue.use(VueRouter)
 
@@ -36,8 +36,8 @@ const routes = [
     component: RenderlessProviderPattern
   },
   {
-    path: '/extending-provider-pattern',
-    component: ExtendingProviderPattern
+    path: '/axios-post-provider-pattern',
+    component: AxiosPostProvider
   },
 ]
 

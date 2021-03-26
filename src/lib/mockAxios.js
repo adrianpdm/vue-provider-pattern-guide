@@ -11,6 +11,18 @@ const axios = {
         // resolve({ data });
       }, 2500);
     })
+  },
+  post: (data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          status: 'OK',
+          statusCode: 200,
+          message: 'Success in saving data',
+          data,
+        });
+      }, 2500);
+    })
   }
 }
 

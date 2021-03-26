@@ -7,7 +7,7 @@
       <router-link to="/provider-pattern">Provider Pattern</router-link> |
       <router-link to="/local-storage-provider-pattern">Local Storage Provider Pattern</router-link> |
       <router-link to="/renderless-provider-pattern">Renderless Provider Pattern</router-link> |
-      <router-link to="/extending-provider-pattern">Extending Providers</router-link> |
+      <router-link to="/axios-post-provider-pattern">Edge Case: Axios Post Providers</router-link> |
     </div>
     <router-view/>
   </div>
